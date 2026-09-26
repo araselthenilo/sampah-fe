@@ -1,0 +1,26 @@
+.switch-button {
+    margin: 0;
+}
+
+.switch-button__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none;
+    gap: var(--spacing-xs);
+}
+
+.switch-button__option {
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: var(--radius-xs);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.2s ease-in-out;
+    border: 2px solid var(--color-primary);
+    user-select: none;
+}
+
+.switch-button__option--active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}

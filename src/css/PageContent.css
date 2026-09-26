@@ -1,0 +1,25 @@
+.page-content {
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.page-content__title {
+    color: var(--color-primary);
+    font-size: var(--font-h1-size);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--font-h1-line-height);
+    letter-spacing: var(--font-h1-tracking);
+}
+
+.page-content__subtitle {
+    font-size: var(--font-h3-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--font-h3-line-height);
+    letter-spacing: var(--font-h3-tracking);
+    color: var(--color-secondary-muted);
+    margin-bottom: var(--spacing-l);
+}
+
+.page-content__body {
+    width: 100%;
+}

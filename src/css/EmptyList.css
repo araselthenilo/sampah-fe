@@ -1,0 +1,56 @@
+.empty-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10rem 0;
+    gap: var(--spacing-l);
+    color: var(--color-primary);
+}
+
+.empty-list i {
+    font-size: 8rem;
+}
+
+.empty-list__body {
+    gap: var(--spacing-l);
+}
+
+.empty-list__message h1 {
+    font-size: var(--font-h2-size);
+    font-weight: var(--font-weight-extrabold);
+    margin: 0;
+}
+
+.empty-list__message p {
+    font-size: var(--font-h4-size);
+}
+
+.empty-list__message {
+    gap: var(--spacing-s);
+}
+
+.empty-list .empty-list__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.empty-list .empty-list__cta-button {
+    font-size: var(--font-h3-size);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-m) var(--spacing-l);
+    display: inline-block;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.empty-list .empty-list__cta-button:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.05);
+}
