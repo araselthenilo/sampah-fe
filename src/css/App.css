@@ -4,6 +4,17 @@
   padding: 0;
 }
 
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: var(--font-family-base);
   color: var(--color-text);

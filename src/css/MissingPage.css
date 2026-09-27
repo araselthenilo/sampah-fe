@@ -31,7 +31,7 @@
   font-size: 80px;
   font-weight: var(--font-weight-extrabold);
   line-height: 1;
-  background: linear-gradient(45deg, var(--color-primary), var(--color-dark-hot-pink), var(--color-sunset-orange));
+  background-color: var(--color-secondary);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -41,7 +41,7 @@
 
 .missing-page__icon {
   font-size: 40px;
-  color: var(--color-sunset-orange);
+  color: var(--color-secondary);
   margin-left: var(--spacing-m);
   animation: missing-page-float 3s ease-in-out infinite;
 }
@@ -115,39 +115,26 @@
 .missing-page__btn--primary {
   background-color: var(--color-primary);
   color: var(--color-white);
-  box-shadow: 0 4px 14px rgba(24, 1, 97, 0.25);
 }
 
 .missing-page__btn--primary:hover {
   background-color: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(24, 1, 97, 0.35);
+  transform: scale(1.01);
 }
 
 .missing-page__btn--secondary {
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  background-color: var(--color-dark-hot-pink);
+  color: var(--color-white);
 }
 
 .missing-page__btn--secondary:hover {
-  background-color: rgba(24, 1, 97, 0.06);
-  transform: translateY(-2px);
-}
-
-.missing-page__btn--easter-egg {
-  background: linear-gradient(135deg, var(--color-dark-hot-pink), var(--color-sunset-orange));
+  background-color: var(--color-dark-hot-pink-hover);
   color: var(--color-white);
-  box-shadow: 0 4px 14px rgba(235, 54, 120, 0.3);
-}
-
-.missing-page__btn--easter-egg:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(235, 54, 120, 0.45);
+  transform: scale(1.01);
 }
 
 /* ==========================================================================
-   Easter Egg 1: Random Study / Dev Excuse Generator
+   Random Study / Dev Excuse Generator
    ========================================================================== */
 .missing-page__excuse-card {
   background: #ffffff;
@@ -221,193 +208,4 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-/* ==========================================================================
-   Easter Egg 2: Retro Arcade Mini-Game "Flashcard Catcher"
-   ========================================================================== */
-.missing-page__arcade {
-  background: #140d2b;
-  border-radius: var(--radius-sm);
-  padding: var(--spacing-l);
-  color: var(--color-white);
-  box-shadow: 0 12px 30px rgba(20, 13, 43, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-m);
-  position: relative;
-  overflow: hidden;
-}
-
-.missing-page__arcade-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-s);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: var(--spacing-s);
-}
-
-.missing-page__arcade-title {
-  font-size: 18px;
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-sunset-orange);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  margin: 0;
-}
-
-.missing-page__arcade-stats {
-  display: flex;
-  gap: var(--spacing-m);
-  font-size: 14px;
-  font-weight: var(--font-weight-bold);
-}
-
-.missing-page__arcade-stat {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 4px 12px;
-  border-radius: var(--radius-chip);
-}
-
-.missing-page__canvas-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #0d0720;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(235, 54, 120, 0.3);
-  overflow: hidden;
-}
-
-.missing-page__canvas {
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  height: 260px;
-  cursor: crosshair;
-}
-
-.missing-page__arcade-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(13, 7, 32, 0.85);
-  backdrop-filter: blur(2px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-m);
-  padding: var(--spacing-m);
-  text-align: center;
-}
-
-.missing-page__arcade-overlay h3 {
-  font-size: 22px;
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-white);
-  margin: 0;
-}
-
-.missing-page__arcade-overlay p {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 380px;
-  margin: 0;
-}
-
-.missing-page__arcade-btn {
-  background: linear-gradient(135deg, var(--color-sunset-orange), var(--color-dark-hot-pink));
-  color: var(--color-white);
-  border: none;
-  font-size: 15px;
-  font-weight: var(--font-weight-extrabold);
-  padding: 10px 24px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  font-family: var(--font-family-base);
-}
-
-.missing-page__arcade-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(251, 119, 60, 0.6);
-}
-
-.missing-page__arcade-instructions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-  flex-wrap: wrap;
-  gap: var(--spacing-s);
-}
-
-/* ==========================================================================
-   Konami Code / Secret Alert
-   ========================================================================== */
-.missing-page__konami-banner {
-  background: linear-gradient(90deg, #180161, #eb3678, #fb773c);
-  color: #ffffff;
-  padding: var(--spacing-m) var(--spacing-l);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  animation: missing-page-konami 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 6px 20px rgba(235, 54, 120, 0.3);
-}
-
-@keyframes missing-page-konami {
-  from {
-    transform: scale(0.9) translateY(10px);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-.missing-page__konami-text {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-s);
-  font-weight: var(--font-weight-bold);
-  font-size: 15px;
-}
-
-.missing-page__konami-close {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: #fff;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-}
-
-.missing-page__konami-close:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.missing-page__footer-hint {
-  text-align: center;
-  font-size: 12px;
-  color: var(--color-secondary-muted);
-  opacity: 0.75;
-  margin: var(--spacing-s) 0;
-  user-select: none;
 }

@@ -1,26 +1,33 @@
 .switch-button {
     margin: 0;
-}
-
-.switch-button__list {
+    position: relative;
+    gap: var(--spacing-xs);
     display: flex;
     flex-direction: row;
     align-items: center;
-    list-style-type: none;
-    gap: var(--spacing-xs);
+    width: 100%;
+}
+
+.switch-button__indicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: all 0.4s cubic-bezier(0.22, -0.92, 0.4, 2.2);
 }
 
 .switch-button__option {
     padding: 8px 20px;
     cursor: pointer;
-    border-radius: var(--radius-xs);
     font-weight: var(--font-weight-bold);
     transition: all 0.2s ease-in-out;
-    border: 2px solid var(--color-primary);
     user-select: none;
 }
 
+.switch-button__option:hover {
+    color: var(--color-dark-hot-pink);
+}
+
 .switch-button__option--active {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-primary) !important;
 }
