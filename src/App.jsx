@@ -7,27 +7,42 @@ import AssignmentsView from "./components/AssignmentsView";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import MissingPage from "./pages/MissingPage";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CreateTask from "./pages/CreateTask";
+import CreateAssignment from "./pages/CreateAssignment";
+import ViewAll from "./components/ViewAll";
+import {
+  createRoutesFromElements,
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  redirect,
+} from "react-router-dom";
+
+const routes = createRoutesFromElements(
+  <>
+    <Route path="/" Component={MainLayout}>
+      <Route index loader={() => redirect("dashboard")} />
+      <Route path="dashboard" Component={Dashboard} />
+      <Route path="tasks-assignments">
+        <Route Component={ViewAll}>
+          <Route index loader={() => redirect("tasks")} />
+          <Route path="tasks" Component={TasksView} />
+          <Route path="assignments" Component={AssignmentsView} />
+        </Route>
+        <Route path="tasks/create" Component={CreateTask} />
+        <Route path="assignments/create" Component={CreateAssignment} />
+      </Route>
+      <Route path="profile" Component={Profile} />
+      <Route path="settings" Component={Settings} />
+    </Route>
+    <Route path="*" Component={MissingPage} />
+  </>,
+);
+
+const router = createBrowserRouter(routes);
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/tasks-assignments" element={<TasksAssignments />}>
-            <Route index element={<Navigate to="tasks" replace />} />
-            <Route path="tasks" element={<TasksView />} />
-            <Route path="assignments" element={<AssignmentsView />} />
-          </Route>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-        </Route>
-        <Route path="*" element={<MissingPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

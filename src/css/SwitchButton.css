@@ -13,7 +13,7 @@
     bottom: 0;
     height: 3px;
     background-color: var(--color-primary);
-    transition: all 0.4s cubic-bezier(0.22, -0.92, 0.4, 2.2);
+    transition: all 0.3s cubic-bezier(0.3, -0.62, 0.4, 1.8);
 }
 
 .switch-button__option {
