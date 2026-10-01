@@ -3,11 +3,15 @@
   margin-bottom: 80px;
 }
 
+.page-content__header-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-content__header {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-s);
-  margin-bottom: var(--spacing-l);
   align-items: center;
 }
 

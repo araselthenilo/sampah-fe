@@ -1,6 +1,6 @@
-import EmptyList from "../components/EmptyList";
+import EmptyList from "./EmptyList";
 
-function TasksView() {
+function ViewTasks() {
   return (
     <>
       <EmptyList
@@ -14,4 +14,4 @@ function TasksView() {
   );
 }
 
-export default TasksView;
+export default ViewTasks;

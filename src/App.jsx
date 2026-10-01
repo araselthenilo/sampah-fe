@@ -2,14 +2,13 @@ import "./css/App.css";
 import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import TasksAssignments from "./pages/TasksAssignments";
-import TasksView from "./components/TasksView";
-import AssignmentsView from "./components/AssignmentsView";
+import ViewTasks from "./components/ViewTasks";
+import ViewAssignments from "./components/ViewAssignments";
+import CreateTask from "./pages/CreateTask";
+import CreateAssignment from "./pages/CreateAssignment";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import MissingPage from "./pages/MissingPage";
-import CreateTask from "./pages/CreateTask";
-import CreateAssignment from "./pages/CreateAssignment";
-import ViewAll from "./components/ViewAll";
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -24,10 +23,10 @@ const routes = createRoutesFromElements(
       <Route index loader={() => redirect("dashboard")} />
       <Route path="dashboard" Component={Dashboard} />
       <Route path="tasks-assignments">
-        <Route Component={ViewAll}>
+        <Route Component={TasksAssignments}>
           <Route index loader={() => redirect("tasks")} />
-          <Route path="tasks" Component={TasksView} />
-          <Route path="assignments" Component={AssignmentsView} />
+          <Route path="tasks" Component={ViewTasks} />
+          <Route path="assignments" Component={ViewAssignments} />
         </Route>
         <Route path="tasks/create" Component={CreateTask} />
         <Route path="assignments/create" Component={CreateAssignment} />

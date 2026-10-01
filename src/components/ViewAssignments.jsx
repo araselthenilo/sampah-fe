@@ -1,6 +1,6 @@
-import EmptyList from "../components/EmptyList";
+import EmptyList from "./EmptyList";
 
-function AssignmentsView() {
+function ViewAssignments() {
   return (
     <>
       <EmptyList
@@ -14,4 +14,4 @@ function AssignmentsView() {
   );
 }
 
-export default AssignmentsView;
+export default ViewAssignments;
