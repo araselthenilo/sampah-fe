@@ -6,7 +6,7 @@ function BackButton({ className, text = "" }) {
 
   return (
     <button className={`${className}`} onClick={() => navigate(-1)}>
-      <i class="fa-solid fa-arrow-left"></i>
+      <i className="fa-solid fa-arrow-left"></i>
       {text && <span>{text}</span>}
     </button>
   );

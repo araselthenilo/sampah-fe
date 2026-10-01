@@ -19,7 +19,32 @@
 .main-layout__outlet {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    margin: 80px 126px;
+    padding: 80px 126px;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(24, 1, 97, 0.2) transparent;
+}
+
+.main-layout__outlet::-webkit-scrollbar,
+.main-layout__sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-layout__outlet::-webkit-scrollbar-track,
+.main-layout__sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-layout__outlet::-webkit-scrollbar-thumb,
+.main-layout__sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 1, 97, 0.2);
+    border-radius: 4px;
+}
+
+.main-layout__outlet::-webkit-scrollbar-thumb:hover,
+.main-layout__sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(24, 1, 97, 0.4);
 }

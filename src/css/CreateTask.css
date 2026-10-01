@@ -1,0 +1,345 @@
+.task-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.task-form__group--jiggle,
+.task-form__input--jiggle,
+.task-form--jiggle {
+    animation: task-form-jiggle 0.45s ease-in-out;
+}
+
+@keyframes task-form-jiggle {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    15% {
+        transform: translateX(-10px);
+    }
+
+    30% {
+        transform: translateX(8px);
+    }
+
+    45% {
+        transform: translateX(-6px);
+    }
+
+    60% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .task-form__group--jiggle,
+    .task-form__input--jiggle,
+    .task-form--jiggle {
+        animation: none;
+    }
+}
+
+.task-form__fields,
+.task-form__inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-l);
+}
+
+.task-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    width: 100%;
+    border-radius: var(--radius-xs);
+    padding: var(--spacing-s);
+}
+
+
+.task-form__group:hover,
+.task-form__group:focus-within {
+    background-color: rgb(224, 229, 255);
+}
+
+.task-form__group--error:hover,
+.task-form__group--error:focus-within {
+    background-color: rgb(255, 224, 235);
+}
+
+.task-form__label {
+    color: var(--color-primary);
+    font-family: var(--font-family-base);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    width: 100%;
+    transition: color 0.15s ease-in-out;
+}
+
+.task-form__label--error,
+.task-label--error {
+    color: var(--color-dark-hot-pink);
+}
+
+.task-form__input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.task-form__input {
+    color: var(--color-primary);
+    font-family: var(--font-family-base);
+    font-size: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-form__char-count {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+    transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.task-form__char-count--error {
+    color: var(--color-dark-hot-pink);
+    opacity: 1;
+}
+
+.task-form__char-count--textarea {
+    right: 1.25rem;
+    bottom: 0.6rem;
+}
+
+.task-form__input--title,
+.task-title {
+    font-size: 36px;
+    padding: 0.5rem 5rem 0.5rem 0.5rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid transparent;
+    font-weight: var(--font-weight-semibold);
+    transition: border-bottom-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.task-form__input--title:hover,
+.task-title:hover,
+.task-form__input--title:focus,
+.task-title:focus {
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.task-form__input--title::placeholder,
+.task-title::placeholder {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    opacity: 0.5;
+}
+
+.task-form__input--title.task-form__input--error,
+.task-form__input--deadline.task-form__input--error,
+.task-form__input.task-form__input--error,
+.task-form__input--error,
+.task-title--error {
+    color: var(--color-dark-hot-pink);
+}
+
+.task-form__input--title.task-form__input--error:hover,
+.task-form__input--title.task-form__input--error:focus,
+.task-form__input--deadline.task-form__input--error:hover,
+.task-form__input--deadline.task-form__input--error:focus,
+.task-form__input--error:hover,
+.task-title--error:hover,
+.task-form__input--error:focus,
+.task-title--error:focus {
+    color: var(--color-dark-hot-pink);
+    border-bottom: 2px solid var(--color-dark-hot-pink);
+}
+
+.task-form__input--title.task-form__input--error::placeholder,
+.task-form__input--error::placeholder,
+.task-title--error::placeholder {
+    color: var(--color-dark-hot-pink);
+    opacity: 0.7;
+}
+
+.task-form__group--deadline {
+    cursor: pointer;
+    user-select: none;
+}
+
+.task-form__group--deadline .task-form__label {
+    cursor: pointer;
+}
+
+.task-form__input--deadline,
+.task-deadline {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    outline: none;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.task-form__input--deadline::placeholder,
+.task-deadline::placeholder {
+    color: var(--color-primary);
+    opacity: 0.5;
+}
+
+.task-form__input--deadline::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: var(--radius-xs);
+    opacity: 0.8;
+    filter: invert(8%) sepia(85%) saturate(5185%) hue-rotate(256deg) brightness(85%) contrast(110%);
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.task-form__input--deadline:hover::-webkit-calendar-picker-indicator,
+.task-form__group--deadline:hover .task-form__input--deadline::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    transform: scale(1.15);
+    background-color: rgba(24, 1, 97, 0.08);
+}
+
+.task-form__input--deadline.task-form__input--error::-webkit-calendar-picker-indicator,
+.task-form__group--error .task-form__input--deadline::-webkit-calendar-picker-indicator {
+    filter: invert(36%) sepia(85%) saturate(2250%) hue-rotate(320deg) brightness(97%) contrast(93%);
+}
+
+.task-form__input--description,
+.task-description {
+    display: block;
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-xs);
+    padding: 0.75rem;
+    padding-bottom: 1.75rem;
+    outline: none;
+    font-size: 18px;
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-medium);
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.task-form__input--description:focus,
+.task-description:focus {
+    border-color: var(--color-primary);
+}
+
+.task-form__input--description::placeholder,
+.task-description::placeholder {
+    color: var(--color-primary);
+    opacity: 0.5;
+}
+
+.task-form__input--description--error {
+    color: var(--color-dark-hot-pink);
+    border: 2px solid var(--color-dark-hot-pink) !important;
+}
+
+@keyframes task-form-error-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-form__error,
+.task-error {
+    color: var(--color-dark-hot-pink);
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+    padding-left: 0.5rem;
+    animation: task-form-error-fade-in 0.2s ease-out;
+}
+
+.task-form__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-form__submit,
+.task-form__reset {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
+    align-items: center;
+    justify-content: center;
+}
+
+.task-form__submit {
+    padding: var(--spacing-m) var(--spacing-xl);
+    font-family: var(--font-family-base);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+.task-form__submit:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+
+.task-form__reset {
+    padding: var(--spacing-m) var(--spacing-xl);
+    font-family: var(--font-family-base);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    background-color: var(--color-dark-hot-pink);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.task-form__reset:hover {
+    background-color: var(--color-dark-hot-pink-hover);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+
+.task-form__submit:active,
+.task-form__reset:active {
+    transform: translateY(0);
+}
