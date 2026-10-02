@@ -5,6 +5,7 @@ import TasksAssignments from "./pages/TasksAssignments";
 import ViewTasks from "./components/ViewTasks";
 import ViewAssignments from "./components/ViewAssignments";
 import CreateTask from "./pages/CreateTask";
+import EditTask from "./pages/EditTask";
 import CreateAssignment from "./pages/CreateAssignment";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
@@ -29,6 +30,7 @@ const routes = createRoutesFromElements(
           <Route path="assignments" Component={ViewAssignments} />
         </Route>
         <Route path="tasks/create" Component={CreateTask} />
+        <Route path="tasks/:taskId/edit" Component={EditTask} />
         <Route path="assignments/create" Component={CreateAssignment} />
       </Route>
       <Route path="profile" Component={Profile} />

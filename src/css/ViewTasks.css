@@ -50,10 +50,12 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  table-layout: fixed;
 }
 
 .tasks-table__th {
-  padding: var(--spacing-m) var(--spacing-l);
+  padding: var(--spacing-s);
+  text-align: center;
   font-family: var(--font-family-base);
   font-size: 15px;
   font-weight: var(--font-weight-extrabold);
@@ -62,16 +64,25 @@
   border-bottom: 2px solid rgba(24, 1, 97, 0.15);
 }
 
-.tasks-table__th--title {
-  width: 30%;
+.tasks-table__th--index {
+  width: 5%;
+  text-align: center;
 }
 
-.tasks-table__th--deadline {
+.tasks-table__th--title {
   width: 25%;
 }
 
+.tasks-table__th--deadline {
+  width: 20%;
+}
+
 .tasks-table__th--description {
-  width: 45%;
+  width: 35%;
+}
+
+.tasks-table__th--actions {
+  width: 15%;
 }
 
 .tasks-table__row {
@@ -87,16 +98,25 @@
 }
 
 .tasks-table__td {
-  padding: var(--spacing-m) var(--spacing-l);
+  padding: var(--spacing-s);
   font-family: var(--font-family-base);
   font-size: 15px;
   border-bottom: 1px solid rgba(24, 1, 97, 0.08);
-  vertical-align: top;
+  vertical-align: middle;
+}
+
+.tasks-table__td--index {
+  text-align: center;
 }
 
 .tasks-table__td--title {
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
+}
+
+.tasks-table__td--deadline {
+  display: flex;
+  justify-content: center;
 }
 
 .tasks-table__deadline-badge {
@@ -122,4 +142,26 @@
 .tasks-table__empty-cell {
   color: rgba(24, 1, 97, 0.35);
   font-weight: var(--font-weight-bold);
+}
+
+.tasks-table__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: clamp(var(--spacing-xs), 2vw, var(--spacing-l));
+}
+
+.tasks-table__action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}
+
+.tasks-table__action-btn--edit:hover {
+  color: var(--color-sunset-orange);
+}
+
+.tasks-table__action-btn--delete:hover {
+  color: var(--color-dark-hot-pink);
 }

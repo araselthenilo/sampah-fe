@@ -1,4 +1,4 @@
-button {
+.back-button {
   border: none;
   background: none;
   display: flex;
@@ -9,7 +9,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.back-button:hover {
   color: var(--color-dark-hot-pink);
 }
 

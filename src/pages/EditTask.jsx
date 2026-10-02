@@ -1,22 +1,58 @@
-import { useState, useRef } from "react";
-import "../css/CreateTask.css";
+import { useState, useRef, useEffect } from "react";
+import "../css/EditTask.css";
 import PageContent from "../components/PageContent";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useBlocker } from "react-router-dom";
 
-function CreateTask() {
+function EditTask() {
+  const { taskId } = useParams();
   const navigate = useNavigate();
   const [shakingFields, setShakingFields] = useState({});
+  const [task, setTask] = useState(null);
   const deadlineInputRef = useRef(null);
+  const isSubmittedRef = useRef(false);
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    formState: { errors }
+    formState: { errors, isDirty }
   } = useForm({
-    mode: "onChange"
+    mode: "onChange",
+    defaultValues: {
+      title: task?.title || "",
+      deadline: task?.deadline || "",
+      description: task?.description || "",
+    }
   });
+
+  const blocker = useBlocker(
+    ({ currentLocation, nextLocation }) =>
+      Boolean(
+        !isSubmittedRef.current
+        && isDirty
+        && currentLocation.pathname
+        !== nextLocation.pathname
+      )
+  );
+
+  useEffect(() => {
+    const existingTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    const currentTask = existingTasks.find((t) => String(t.id) === String(taskId));
+
+    if (!currentTask) {
+      navigate("/tasks-assignments/tasks", { replace: true });
+      return;
+    }
+
+    setTask(currentTask);
+
+    reset({
+      title: currentTask.title,
+      deadline: currentTask.deadline || "",
+      description: currentTask.description || ""
+    });
+  }, [taskId, navigate, reset]);
 
   const taskTitle = watch("title", "");
   const taskDescription = watch("description", "");
@@ -110,16 +146,19 @@ function CreateTask() {
   const onSubmit = (data) => {
     try {
       const existingTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-      const newTask = {
-        id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(),
+      const remainingTasks = existingTasks.filter((t) => String(t.id) !== String(taskId));
+      let updatedTask = existingTasks.find((t) => String(t.id) === String(taskId));
+
+      updatedTask = {
+        ...updatedTask,
         title: data.title.trim(),
         deadline: data.deadline || null,
         description: data.description ? data.description.trim() : "",
-        createdAt: new Date().toISOString()
       };
 
-      localStorage.setItem("tasks", JSON.stringify([newTask, ...existingTasks]));
+      localStorage.setItem("tasks", JSON.stringify([updatedTask, ...remainingTasks]));
       reset();
+      isSubmittedRef.current = true;
       navigate("/tasks-assignments/tasks");
     } catch (error) {
       console.error("Failed to save task to localStorage:", error);
@@ -133,10 +172,36 @@ function CreateTask() {
 
   return (
     <PageContent
-      title="Create Task"
-      subtitle="Add a new task to the list"
+      title="Edit Task"
+      subtitle={task?.title ? `Revision In Progress: ${task.title}` : "Revision In Progress"}
       back_button={true}
     >
+      {blocker.state === "blocked" && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <h3 className="modal__title">Unsaved Changes</h3>
+            <p className="modal__message">
+              You have unsaved changes. Leaving now will discard all your edits. Are you sure?
+            </p>
+            <div className="modal__actions">
+              <button
+                type="button"
+                className="modal__btn modal__btn--cancel"
+                onClick={() => blocker.reset()}
+              >
+                Keep Editing
+              </button>
+              <button
+                type="button"
+                className="modal__btn modal__btn--confirm"
+                onClick={() => blocker.proceed()}
+              >
+                Discard & Leave
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <form
         className="task-form"
         noValidate
@@ -230,10 +295,10 @@ function CreateTask() {
         <div className="task-form__actions">
           <button
             type="submit"
-            className="task-form__submit"
+            className="task-form__save"
           >
-            <i className="fa-solid fa-plus" />
-            Create Task
+            <i className="fa-solid fa-floppy-disk" />
+            Save Edit
           </button>
           <button
             type="reset"
@@ -249,4 +314,4 @@ function CreateTask() {
   );
 }
 
-export default CreateTask;
+export default EditTask;

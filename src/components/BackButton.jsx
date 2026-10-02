@@ -5,8 +5,8 @@ function BackButton({ className, text = "" }) {
   let navigate = useNavigate();
 
   return (
-    <button className={`${className}`} onClick={() => navigate(-1)}>
-      <i className="fa-solid fa-arrow-left"></i>
+    <button className={`back-button ${className}`} onClick={() => navigate(-1)}>
+      <i className="back-button__icon fa-solid fa-arrow-left"></i>
       {text && <span>{text}</span>}
     </button>
   );
